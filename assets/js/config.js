@@ -6,7 +6,7 @@ window.SITE = {
   name: '힐스테이트 중외공원',
   theme: 'hillstate',
   tel: '1533-5006',
-  registerUrl: 'https://www.hillstate-hec.co.kr/sale/complex/intrst/non-mem-write?cmplxSeq=225',
+  registerUrl: 'register.html',
   naverMap: 'https://naver.me/GEIc8WqS',
   kakaoMap: 'https://kko.to/kmpCe90c_t',
   privacyPdf: 'assets/files/privacy.pdf',
@@ -45,7 +45,7 @@ window.SITE = {
     ]},
     { label: '홍보센터', en: 'PR CENTER', children: [
       { label: '소개영상', href: 'media.html' },
-      { label: '관심고객등록', href: '@register', external: true }
+      { label: '관심고객등록', href: 'register.html' }
     ]}
   ],
 

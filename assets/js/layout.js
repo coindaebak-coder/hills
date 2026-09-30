@@ -9,7 +9,7 @@
 
   document.documentElement.setAttribute('data-theme', S.theme);
 
-  function href(c) { return c.href === '@register' ? S.registerUrl : c.href; }
+  function href(c) { return c.href; }
   function attrs(c) { return c.external ? ' target="_blank" rel="noopener"' : ''; }
 
   // 현재 메뉴 찾기
@@ -34,7 +34,7 @@
       '<h1 class="logo"><a href="index.html"><img src="assets/img/logo.png" alt="힐스테이트 중외공원"></a></h1>' +
       '<nav class="gnb" aria-label="주메뉴"><ul>' + gnb + '</ul></nav>' +
       '<div class="hd-util">' +
-        '<a class="hd-reg" href="' + S.registerUrl + '" target="_blank" rel="noopener">관심고객등록</a>' +
+        '<a class="hd-reg" href="' + S.registerUrl + '">관심고객등록</a>' +
         '<a class="hd-tel" href="' + telHref + '"><span class="ico-tel" aria-hidden="true"></span>' + telDot + '</a>' +
       '</div>' +
       '<button class="menu-btn" type="button" aria-label="메뉴 열기" aria-expanded="false"><span></span><span></span><span></span></button>' +
@@ -92,7 +92,7 @@
   quick.innerHTML =
     '<a class="q-open" href="sale02.html"><b>선착순<br>분양중</b></a>' +
     '<a class="q-ico q-map" href="location.html" title="오시는길"><span class="sr-only">오시는길</span></a>' +
-    '<a class="q-ico q-reg" href="' + S.registerUrl + '" target="_blank" rel="noopener" title="관심고객등록"><span class="sr-only">관심고객등록</span></a>' +
+    '<a class="q-ico q-reg" href="' + S.registerUrl + '" title="관심고객등록"><span class="sr-only">관심고객등록</span></a>' +
     '<div class="q-video"><p>QUICK<br>MENU</p><ul>' +
       S.quickVideos.map(function (v, i) {
         return '<li><a href="' + v.href + '" data-video="' + i + '"><img src="' + v.img + '" alt="' + v.label + ' 재생"></a></li>';
@@ -105,7 +105,7 @@
   mobileBar.className = 'mobile-bar';
   mobileBar.innerHTML =
     '<a href="' + telHref + '">전화상담</a>' +
-    '<a href="' + S.registerUrl + '" target="_blank" rel="noopener">관심고객등록</a>' +
+    '<a href="' + S.registerUrl + '">관심고객등록</a>' +
     '<a href="media.html">홍보영상</a>' +
     '<a href="location.html">오시는길</a>';
   document.body.appendChild(mobileBar);

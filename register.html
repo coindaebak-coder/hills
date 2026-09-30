@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="hillstate">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>관심고객등록 | 힐스테이트 중외공원</title>
+<meta name="description" content="힐스테이트 중외공원 관심고객등록 - 분양 소식을 가장 먼저 받아보세요.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="힐스테이트 중외공원">
+<meta property="og:description" content="삶이 예술이 되다">
+<meta property="og:image" content="assets/img/og.png">
+<link rel="icon" href="assets/img/favicon.jpg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nanum+Myeongjo:wght@400;700&display=swap">
+<link rel="stylesheet" href="assets/css/theme-hillstate.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<main class="sub">
+  <div class="sub-content">
+    <p class="reg-lead">힐스테이트 중외공원에 관심을 가져주셔서 감사합니다.<br>관심고객으로 등록하시면 분양 관련 소식을 가장 먼저 안내해 드립니다.</p>
+
+    <form class="reg-form" id="reg-form" action="register.php" method="post" novalidate>
+      <p class="req-note"><em>*</em> 필수 입력 항목</p>
+
+      <div class="reg-row">
+        <label class="tit" for="f-name">성명<em>*</em></label>
+        <div class="fld"><input type="text" id="f-name" name="name" maxlength="20" autocomplete="name" required></div>
+      </div>
+      <div class="reg-row">
+        <label class="tit" for="f-phone">휴대폰<em>*</em></label>
+        <div class="fld"><input type="tel" id="f-phone" name="phone" maxlength="13" placeholder="010-0000-0000" autocomplete="tel" inputmode="numeric" required></div>
+      </div>
+      <div class="reg-row">
+        <label class="tit" for="f-email">이메일</label>
+        <div class="fld"><input type="email" id="f-email" name="email" maxlength="80" autocomplete="email"></div>
+      </div>
+      <div class="reg-row">
+        <label class="tit" for="f-region">거주지역</label>
+        <div class="fld">
+          <select id="f-region" name="region">
+            <option value="">선택하세요</option>
+            <option>광주광역시 북구</option>
+            <option>광주광역시 서구</option>
+            <option>광주광역시 남구</option>
+            <option>광주광역시 동구</option>
+            <option>광주광역시 광산구</option>
+            <option>전라남도</option>
+            <option>전라북도</option>
+            <option>서울·경기·인천</option>
+            <option>기타 지역</option>
+          </select>
+        </div>
+      </div>
+      <fieldset class="reg-row">
+        <legend class="tit">관심블록</legend>
+        <div class="fld chips">
+          <label><input type="radio" name="block" value="2BL"><span>2BL</span></label>
+          <label><input type="radio" name="block" value="3BL"><span>3BL</span></label>
+          <label><input type="radio" name="block" value="무관"><span>무관</span></label>
+        </div>
+      </fieldset>
+      <fieldset class="reg-row">
+        <legend class="tit">관심평형</legend>
+        <div class="fld chips">
+          <label><input type="checkbox" name="types[]" value="84㎡"><span>84㎡</span></label>
+          <label><input type="checkbox" name="types[]" value="102㎡(테라스)"><span>102㎡ <small>테라스</small></span></label>
+          <label><input type="checkbox" name="types[]" value="112㎡"><span>112㎡</span></label>
+          <label><input type="checkbox" name="types[]" value="157㎡(테라스)"><span>157㎡ <small>테라스</small></span></label>
+        </div>
+      </fieldset>
+      <div class="reg-row">
+        <label class="tit" for="f-memo">문의사항</label>
+        <div class="fld"><textarea id="f-memo" name="memo" maxlength="500" placeholder="궁금하신 내용을 남겨주세요. (선택)"></textarea></div>
+      </div>
+
+      <!-- 스팸 방지용 (사람에게는 보이지 않음) -->
+      <div class="hp" aria-hidden="true"><label>홈페이지 <input type="text" name="website" tabindex="-1" autocomplete="off"></label></div>
+
+      <div class="agree-box">
+        <h3>개인정보 수집 및 이용 동의 <em>(필수)</em></h3>
+        <div class="terms" tabindex="0">
+          <p><b>1. 수집·이용 목적</b> : 힐스테이트 중외공원 분양 정보 안내 및 상담</p>
+          <p><b>2. 수집 항목</b> : (필수) 성명, 휴대폰 번호 / (선택) 이메일, 거주지역, 관심블록, 관심평형, 문의사항</p>
+          <p><b>3. 보유·이용 기간</b> : 수집일로부터 분양 완료 시까지 (목적 달성 후 지체 없이 파기)</p>
+          <p>※ 귀하는 개인정보 수집·이용에 동의하지 않을 권리가 있으며, 동의하지 않을 경우 관심고객 등록이 제한됩니다.</p>
+        </div>
+        <label class="check"><input type="checkbox" name="agree" value="Y" required> 개인정보 수집 및 이용에 동의합니다.</label>
+
+        <h3>마케팅 정보 수신 동의 <em class="opt">(선택)</em></h3>
+        <div class="terms" tabindex="0">
+          <p>분양 일정, 이벤트, 견본주택 방문 안내 등의 정보를 문자(SMS)·이메일로 받아보실 수 있습니다. 동의하지 않아도 관심고객 등록은 가능하며, 수신 동의는 언제든지 철회할 수 있습니다.</p>
+        </div>
+        <label class="check"><input type="checkbox" name="marketing" value="Y"> 마케팅 정보 수신에 동의합니다.</label>
+      </div>
+
+      <p class="form-msg" role="status" aria-live="polite"></p>
+      <div class="reg-submit"><button type="submit" class="btn-submit">관심고객 등록하기</button></div>
+    </form>
+
+    <div class="notice-box">
+      <p>관심고객 등록은 청약 신청이 아니며, 청약은 한국부동산원 청약홈(www.applyhome.co.kr)에서 신청하셔야 합니다.</p>
+      <p>등록하신 정보는 분양 안내 목적 외에는 사용되지 않습니다. 분양 문의 : 1533-5006</p>
+    </div>
+  </div>
+</main>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/layout.js"></script>
+<script>
+  (function () {
+    var f = document.getElementById('reg-form');
+    var msg = f.querySelector('.form-msg');
+    var btn = f.querySelector('.btn-submit');
+    function say(text, ok) { msg.textContent = text; msg.className = 'form-msg ' + (ok ? 'ok' : 'err'); }
+
+    f.phone.addEventListener('input', function () {
+      var v = this.value.replace(/[^0-9]/g, '').slice(0, 11);
+      this.value = v.length < 4 ? v : v.length < 8 ? v.replace(/(\d{3})(\d+)/, '$1-$2')
+        : v.replace(/(\d{3})(\d{3,4})(\d{4})$/, '$1-$2-$3');
+    });
+
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!f.name.value.trim()) { say('성명을 입력해 주세요.'); f.name.focus(); return; }
+      if (!/^01[016789]-?\d{3,4}-?\d{4}$/.test(f.phone.value)) { say('휴대폰 번호를 정확히 입력해 주세요.'); f.phone.focus(); return; }
+      if (f.email.value && !f.email.checkValidity()) { say('이메일 주소를 확인해 주세요.'); f.email.focus(); return; }
+      if (!f.agree.checked) { say('개인정보 수집 및 이용에 동의해 주세요.'); f.agree.focus(); return; }
+      btn.disabled = true;
+      say('등록 중입니다...', true);
+      fetch(f.action, { method: 'POST', body: new FormData(f), headers: { 'X-Requested-With': 'fetch' } })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          say(d.message, d.ok);
+          if (d.ok) { f.reset(); alert(d.message); }
+        })
+        .catch(function () { say('일시적인 오류가 발생했습니다. 분양문의(1533-5006)로 연락해 주세요.'); })
+        .then(function () { btn.disabled = false; });
+    });
+  })();
+</script>
+</body>
+</html>
