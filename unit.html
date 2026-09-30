@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="hillstate">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>세대안내 | 힐스테이트 중외공원</title>
+<meta name="description" content="힐스테이트 중외공원 세대안내">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+KR:wght@500;600&display=swap">
+<link rel="stylesheet" href="assets/css/theme-hillstate.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<main>
+  <section class="sub-visual">
+    <div>
+      <p class="en">UNIT PLAN</p>
+      <h1>세대안내</h1>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="inner">
+      <div class="sec-head" data-reveal>
+        <p class="en">UNIT PLAN</p>
+        <h2>세대안내</h2>
+        <p>전 세대 전용 84~157㎡ 중대형 설계</p>
+      </div>
+      <div data-tabs id="unit-tabs">
+        <div class="tabs" role="tablist"><button type="button" class="on" data-tab="84" aria-selected="true">84㎡</button><button type="button" data-tab="102" aria-selected="false">102㎡</button><button type="button" data-tab="112" aria-selected="false">112㎡</button><button type="button" data-tab="157" aria-selected="false">157㎡</button></div>
+        <div data-panel="84">
+          <div class="split">
+            <div class="ph tall" data-src="assets/img/unit_84.jpg" data-label="84㎡ 평면도 이미지 준비중"></div>
+            <div>
+              <h3>84㎡ TYPE</h3>
+              <table class="info-table"><tbody>
+                <tr><th>전용면적</th><td>84㎡</td></tr>
+                <tr><th>공급세대</th><td>2BL 536세대 · 3BL 434세대 (테라스 특화 포함)</td></tr>
+              </tbody></table>
+              <p class="table-note">※ 평면 이미지는 소비자의 이해를 돕기 위한 것으로 실제 시공 시 차이가 있을 수 있습니다.</p>
+            </div>
+          </div>
+        </div>
+        <div data-panel="102" hidden>
+          <div class="split">
+            <div class="ph tall" data-src="assets/img/unit_102.jpg" data-label="102㎡ 평면도 이미지 준비중"></div>
+            <div>
+              <h3>102㎡ TYPE</h3>
+              <table class="info-table"><tbody>
+                <tr><th>전용면적</th><td>102㎡</td></tr>
+                <tr><th>공급세대</th><td>2BL 4세대 · 3BL 6세대 (테라스 특화)</td></tr>
+              </tbody></table>
+              <p class="table-note">※ 평면 이미지는 소비자의 이해를 돕기 위한 것으로 실제 시공 시 차이가 있을 수 있습니다.</p>
+            </div>
+          </div>
+        </div>
+        <div data-panel="112" hidden>
+          <div class="split">
+            <div class="ph tall" data-src="assets/img/unit_112.jpg" data-label="112㎡ 평면도 이미지 준비중"></div>
+            <div>
+              <h3>112㎡ TYPE</h3>
+              <table class="info-table"><tbody>
+                <tr><th>전용면적</th><td>112㎡</td></tr>
+                <tr><th>공급세대</th><td>2BL 241세대 · 3BL 235세대</td></tr>
+              </tbody></table>
+              <p class="table-note">※ 평면 이미지는 소비자의 이해를 돕기 위한 것으로 실제 시공 시 차이가 있을 수 있습니다.</p>
+            </div>
+          </div>
+        </div>
+        <div data-panel="157" hidden>
+          <div class="split">
+            <div class="ph tall" data-src="assets/img/unit_157.jpg" data-label="157㎡ 평면도 이미지 준비중"></div>
+            <div>
+              <h3>157㎡ TYPE</h3>
+              <table class="info-table"><tbody>
+                <tr><th>전용면적</th><td>157㎡</td></tr>
+                <tr><th>공급세대</th><td>2BL 4세대 · 3BL 6세대 (복층 · 테라스 특화)</td></tr>
+              </tbody></table>
+              <p class="table-note">※ 평면 이미지는 소비자의 이해를 돕기 위한 것으로 실제 시공 시 차이가 있을 수 있습니다.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/layout.js"></script>
+<script>
+  // unit.html#112 형태로 진입 시 해당 타입 탭 열기
+  (function () {
+    var b = document.querySelector('#unit-tabs [data-tab="' + location.hash.slice(1) + '"]');
+    if (b) b.click();
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="hillstate">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>관심고객등록 | 힐스테이트 중외공원</title>
+<meta name="description" content="힐스테이트 중외공원 관심고객등록">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Noto+Serif+KR:wght@500;600&display=swap">
+<link rel="stylesheet" href="assets/css/theme-hillstate.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<main>
+  <section class="sub-visual">
+    <div>
+      <p class="en">REGISTER</p>
+      <h1>관심고객등록</h1>
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="inner">
+      <div class="sec-head" data-reveal>
+        <p class="en">REGISTER</p>
+        <h2>관심고객등록</h2>
+        <p>등록해 주시면 분양 소식을 가장 먼저 안내해 드립니다.</p>
+      </div>
+      <form class="form" id="reg-form" action="register.php" method="post" novalidate>
+        <div class="form-row">
+          <label class="tit" for="f-name">성명<em>*</em></label>
+          <input type="text" id="f-name" name="name" maxlength="20" required>
+        </div>
+        <div class="form-row">
+          <label class="tit" for="f-phone">연락처<em>*</em></label>
+          <input type="tel" id="f-phone" name="phone" maxlength="13" placeholder="010-0000-0000" required>
+        </div>
+        <div class="form-row">
+          <span class="tit" style="font-weight:600;color:var(--c-ink)">관심타입</span>
+          <div class="radio-group">
+            <label><input type="radio" name="type" value="84㎡"> 84㎡</label>
+            <label><input type="radio" name="type" value="102㎡"> 102㎡</label>
+            <label><input type="radio" name="type" value="112㎡"> 112㎡</label>
+            <label><input type="radio" name="type" value="157㎡"> 157㎡</label>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="tit" for="f-memo">문의사항</label>
+          <textarea id="f-memo" name="memo" maxlength="500"></textarea>
+        </div>
+        <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <div class="agree">
+          <div class="terms">
+            <b>개인정보 수집 및 이용 동의</b><br>
+            1. 수집항목: 성명, 연락처, 관심타입, 문의사항<br>
+            2. 수집목적: 분양 정보 안내 및 상담<br>
+            3. 보유기간: 분양 완료 시까지 (목적 달성 후 지체 없이 파기)<br>
+            ※ 동의를 거부할 권리가 있으며, 거부 시 관심고객 등록이 제한됩니다.
+          </div>
+          <label><input type="checkbox" name="agree" value="Y" required> 개인정보 수집 및 이용에 동의합니다.</label>
+        </div>
+        <div class="submit"><button type="submit" class="btn fill">등록하기</button></div>
+        <p class="form-msg" role="status"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/layout.js"></script>
+<script>
+  (function () {
+    var f = document.getElementById('reg-form');
+    var msg = f.querySelector('.form-msg');
+    f.phone.addEventListener('input', function () {
+      var v = this.value.replace(/[^0-9]/g, '').slice(0, 11);
+      this.value = v.replace(/^(\d{3})(\d{3,4})(\d{4})$/, '$1-$2-$3');
+    });
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!f.name.value.trim()) { msg.textContent = '성명을 입력해 주세요.'; f.name.focus(); return; }
+      if (!/^01[0-9]-?\d{3,4}-?\d{4}$/.test(f.phone.value)) { msg.textContent = '연락처를 정확히 입력해 주세요.'; f.phone.focus(); return; }
+      if (!f.agree.checked) { msg.textContent = '개인정보 수집 및 이용에 동의해 주세요.'; return; }
+      msg.textContent = '전송 중입니다...';
+      fetch(f.action, { method: 'POST', body: new FormData(f) })
+        .then(function (r) { return r.json(); })
+        .then(function (d) {
+          msg.textContent = d.message;
+          if (d.ok) f.reset();
+        })
+        .catch(function () { msg.textContent = '일시적인 오류가 발생했습니다. 전화로 문의해 주세요.'; });
+    });
+  })();
+</script>
+</body>
+</html>
