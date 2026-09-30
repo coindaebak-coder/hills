@@ -63,11 +63,18 @@ window.SITE = {
     copyright: 'COPYRIGTHT © 힐스테이트 중외공원. ALL RIGHTS RESERVED.'
   },
 
-  // 우측 퀵메뉴 (소개영상 바로가기)
+  // 우측 퀵메뉴 (소개영상) - 썸네일을 누르면 팝업으로 바로 재생
+  // videos: YouTube 영상 ID 목록 (여러 개면 팝업 안에 탭으로 표시), shorts: 세로 영상
   quickVideos: [
-    { img: 'assets/img/quick_img04.png', href: 'media.html?type=2', label: '3D Video' },
-    { img: 'assets/img/quick_img01.png', href: 'media.html?type=3', label: 'Sand Art Video' },
-    { img: 'assets/img/quick_img03.png', href: 'media.html?type=4', label: 'Concept Video' },
-    { img: 'assets/img/quick_img02.png', href: 'media.html?type=5', label: 'Shorts Form' }
+    { img: 'assets/img/quick_img04.png', href: 'media.html?type=2', label: '3D Video',
+      videos: [{ id: 'qWZkhZGuaWg' }] },
+    { img: 'assets/img/quick_img01.png', href: 'media.html?type=3', label: 'Sand Art Video',
+      videos: [{ id: 'IMBCQN0X0z8' }] },
+    { img: 'assets/img/quick_img03.png', href: 'media.html?type=4', label: 'Concept Video',
+      videos: [{ id: 'bAaP6x4EiSM', title: '종합편' }, { id: 't7U4Bg_3veI', title: '공원편' },
+               { id: 'hw8SM3ZsRMQ', title: '라이프편' }, { id: 'mQKPTfxxvL0', title: '문화편' }] },
+    { img: 'assets/img/quick_img02.png', href: 'media.html?type=5', label: 'Shorts Form', shorts: true,
+      videos: [{ id: 'N3iLke-5Otw', title: 'Shorts Form①' }, { id: 'SpyMLejk0-Q', title: 'Shorts Form②' },
+               { id: '0NXYG9MTasg', title: 'Shorts Form③' }] }
   ]
 };

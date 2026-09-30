@@ -54,10 +54,30 @@ button { font: inherit; cursor: pointer; }
 .q-ico::after { content: ""; position: absolute; inset: 15px; background: #fff; -webkit-mask: var(--ico) center/contain no-repeat; mask: var(--ico) center/contain no-repeat; }
 .q-map { --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z'/%3E%3C/svg%3E"); }
 .q-reg { --ico: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8'%3E%3Ccircle cx='10' cy='7' r='4'/%3E%3Cpath d='M3 21c0-4 3-7 7-7 1.3 0 2.5.3 3.5.9'/%3E%3Cpath d='M15 20l1-3 5-5 2 2-5 5-3 1z'/%3E%3C/svg%3E"); }
-.q-video { width: 110px; background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 6px 16px rgba(0, 0, 0, .12); text-align: center; }
-.q-video p { background: var(--c-primary); color: #fff; font-size: 12px; font-weight: 700; line-height: 1.2; padding: 8px 0; }
-.q-video ul { padding: 6px; display: grid; gap: 6px; }
-.q-video img { width: 100%; border-radius: 4px; }
+.q-video { width: 144px; background: #fff; border-radius: 14px 14px 6px 6px; overflow: hidden; box-shadow: 0 8px 22px rgba(0, 0, 0, .15); text-align: center; }
+.q-video p { background: var(--c-primary); color: #fff; font-size: 19px; font-weight: 800; line-height: 1.05; padding: 12px 0 10px; letter-spacing: -.01em; }
+.q-video ul { padding: 10px 12px 12px; display: grid; gap: 10px; }
+.q-video a { display: block; border-radius: 4px; overflow: hidden; transition: transform .25s, box-shadow .25s; }
+.q-video a:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0, 0, 0, .2); }
+.q-video img { width: 100%; }
+
+/* 동영상 팝업 */
+.video-modal { position: fixed; inset: 0; z-index: 3000; background: rgba(0, 0, 0, .8); display: flex; align-items: center; justify-content: center; padding: 20px; }
+.video-modal[hidden] { display: none; }
+.vm-box { width: min(1000px, 100%); }
+.vm-box.shorts { width: min(400px, 100%); }
+.vm-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; color: #fff; }
+.vm-title { font-size: 20px; font-weight: 600; color: #fff; }
+.vm-close { width: 44px; height: 44px; border: 0; background: none; color: #fff; font-size: 38px; line-height: 1; }
+.vm-tabs { display: flex; gap: 6px; margin-bottom: 12px; flex-wrap: wrap; }
+.vm-tabs button { flex: 1; min-width: 80px; height: 40px; border: 0; border-radius: 4px; background: rgba(255, 255, 255, .15); color: #fff; font-size: 14px; }
+.vm-tabs button.on { background: var(--c-primary); }
+.vm-player { position: relative; aspect-ratio: 16/9; background: #000; }
+.vm-box.shorts .vm-player { aspect-ratio: 9/16; max-height: calc(100vh - 160px); margin: 0 auto; }
+.vm-player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@media (max-height: 860px) and (min-width: 1025px) {
+  .q-open, .q-ico { display: none; }
+}
 .q-top { width: 54px; height: 54px; border-radius: 50%; border: 0; background: var(--c-primary); color: #fff; font-size: 12px; font-weight: 700; opacity: 0; visibility: hidden; transition: .3s; }
 .quick.show-top .q-top { opacity: 1; visibility: visible; }
 .mobile-bar { display: none; }
@@ -211,11 +231,10 @@ picture { display: block; }
   .hd-tel { font-size: 26px; }
   .quick { right: 16px; }
   .q-open { width: 92px; height: 92px; } .q-open b { font-size: 15px; }
-  .q-video { width: 92px; }
+  .q-video { width: 120px; } .q-video p { font-size: 16px; }
 }
 @media (max-width: 1200px) {
   .hd-reg { display: none; }
-  .q-video { display: none; }
 }
 @media (max-width: 1024px) {
   :root { --header-h: 64px; }
@@ -271,8 +290,8 @@ picture { display: block; }
 }
 @media (max-width: 768px) {
   .hd-tel { display: none; }
-  .mobile-bar { display: grid; grid-template-columns: repeat(3, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 95; background: var(--c-footer); }
-  .mobile-bar a { padding: 15px 0; text-align: center; color: #fff; font-size: 15px; font-weight: 600; }
+  .mobile-bar { display: grid; grid-template-columns: repeat(4, 1fr); position: fixed; left: 0; right: 0; bottom: 0; z-index: 95; background: var(--c-footer); }
+  .mobile-bar a { padding: 15px 0; text-align: center; color: #fff; font-size: 14px; font-weight: 600; }
   .mobile-bar a + a { border-left: 1px solid rgba(255, 255, 255, .12); }
   .mobile-bar a:nth-child(2) { background: var(--c-primary); }
   .hero-links a { font-size: 13px; height: 48px; }

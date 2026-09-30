@@ -94,8 +94,8 @@
     '<a class="q-ico q-map" href="location.html" title="오시는길"><span class="sr-only">오시는길</span></a>' +
     '<a class="q-ico q-reg" href="' + S.registerUrl + '" target="_blank" rel="noopener" title="관심고객등록"><span class="sr-only">관심고객등록</span></a>' +
     '<div class="q-video"><p>QUICK<br>MENU</p><ul>' +
-      S.quickVideos.map(function (v) {
-        return '<li><a href="' + v.href + '"><img src="' + v.img + '" alt="' + v.label + '"></a></li>';
+      S.quickVideos.map(function (v, i) {
+        return '<li><a href="' + v.href + '" data-video="' + i + '"><img src="' + v.img + '" alt="' + v.label + ' 재생"></a></li>';
       }).join('') +
     '</ul></div>' +
     '<button class="q-top" type="button">TOP</button>';
@@ -106,6 +106,7 @@
   mobileBar.innerHTML =
     '<a href="' + telHref + '">전화상담</a>' +
     '<a href="' + S.registerUrl + '" target="_blank" rel="noopener">관심고객등록</a>' +
+    '<a href="media.html">홍보영상</a>' +
     '<a href="location.html">오시는길</a>';
   document.body.appendChild(mobileBar);
 
@@ -136,6 +137,55 @@
 
   quick.querySelector('.q-top').addEventListener('click', function () {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ===== 퀵메뉴 동영상 팝업 =====
+  var vm = document.createElement('div');
+  vm.className = 'video-modal';
+  vm.hidden = true;
+  vm.innerHTML =
+    '<div class="vm-box" role="dialog" aria-modal="true">' +
+      '<div class="vm-head"><h2 class="vm-title"></h2><button type="button" class="vm-close" aria-label="닫기">&times;</button></div>' +
+      '<div class="vm-tabs" role="tablist"></div>' +
+      '<div class="vm-player"><iframe title="동영상" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>' +
+    '</div>';
+  document.body.appendChild(vm);
+  var vmFrame = vm.querySelector('iframe');
+  var vmTabs = vm.querySelector('.vm-tabs');
+  function play(id) {
+    vmFrame.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+  }
+  function openVideo(v) {
+    vm.querySelector('.vm-title').textContent = v.label;
+    vm.querySelector('.vm-box').classList.toggle('shorts', !!v.shorts);
+    vmTabs.innerHTML = v.videos.length > 1 ? v.videos.map(function (x, n) {
+      return '<button type="button" role="tab" data-id="' + x.id + '"' + (n === 0 ? ' class="on"' : '') + '>' + x.title + '</button>';
+    }).join('') : '';
+    vmTabs.hidden = v.videos.length < 2;
+    play(v.videos[0].id);
+    vm.hidden = false;
+    document.body.classList.add('no-scroll');
+    vm.querySelector('.vm-close').focus();
+  }
+  function closeVideo() {
+    vm.hidden = true;
+    vmFrame.src = 'about:blank';
+    document.body.classList.remove('no-scroll');
+  }
+  vmTabs.addEventListener('click', function (e) {
+    var b = e.target.closest('button');
+    if (!b) return;
+    vmTabs.querySelectorAll('button').forEach(function (x) { x.classList.toggle('on', x === b); });
+    play(b.getAttribute('data-id'));
+  });
+  vm.querySelector('.vm-close').addEventListener('click', closeVideo);
+  vm.addEventListener('click', function (e) { if (e.target === vm) closeVideo(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !vm.hidden) closeVideo(); });
+  quick.querySelectorAll('[data-video]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      openVideo(S.quickVideos[+a.getAttribute('data-video')]);
+    });
   });
 
   // 스크롤 등장
