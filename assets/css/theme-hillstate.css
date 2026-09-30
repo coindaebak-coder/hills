@@ -2,29 +2,26 @@
  * 힐스테이트 테마
  * 색상·서체 토큰만 정의합니다. 레이아웃은 style.css가 담당하므로
  * 다른 브랜드 테마를 추가할 때는 이 파일을 복사해 값만 바꾸고
- * config.js의 theme 값과 <link> 경로를 변경하면 됩니다.
+ * config.js의 theme 값과 각 페이지의 테마 <link>를 변경하면 됩니다.
  */
 :root[data-theme="hillstate"],
 :root {
-  --c-primary: #12302d;       /* 힐스테이트 딥그린 */
-  --c-primary-2: #1d4541;
-  --c-accent: #b0936a;        /* 샴페인 골드 */
-  --c-accent-2: #d6c3a1;
-  --c-ink: #1b1b1b;
-  --c-text: #4a4a48;
-  --c-muted: #8a8780;
-  --c-line: #e3ded4;
-  --c-bg: #ffffff;
-  --c-bg-soft: #f6f3ee;       /* 아이보리 */
-  --c-bg-dark: #0d1f1d;
+  --c-primary: #a5111c;       /* 힐스테이트 레드 */
+  --c-primary-dark: #7c0c15;
+  --c-primary-soft: #f7ecec;
+  --c-accent: #b89a6a;        /* 골드 포인트 */
+  --c-ink: #1a1a1a;
+  --c-text: #444;
+  --c-muted: #888;
+  --c-line: #e2e2e2;
+  --c-bg: #fff;
+  --c-bg-soft: #f6f5f3;
+  --c-footer: #2b2929;
 
-  --font-sans: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-serif: "Noto Serif KR", "Nanum Myeongjo", serif;
-  --font-en: "Cormorant Garamond", "Noto Serif KR", serif;
+  --font-sans: "Pretendard", "Noto Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-serif: "Nanum Myeongjo", "Noto Serif KR", serif;
+  --font-en: "Marcellus", "Cormorant Garamond", serif;
 
-  --radius: 2px;
-  --header-h: 88px;
-  --maxw: 1280px;
-
-  --hero-overlay: linear-gradient(180deg, rgba(13, 31, 29, .55) 0%, rgba(13, 31, 29, .25) 45%, rgba(13, 31, 29, .75) 100%);
+  --header-h: 100px;
+  --maxw: 1200px;
 }
